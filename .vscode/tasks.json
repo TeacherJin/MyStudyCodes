@@ -11,7 +11,7 @@
     //]
     "tasks": [
         {
-            "taskName": "build",
+            "label": "build",
             "command": "gcc",
             "args": [
                 "-Wall",
@@ -26,23 +26,9 @@
                 "isDefault": true
             }
         },
-        // {
-        //     "taskName": "build-debug",
-        //     "command": "gcc",
-        //     "args": [
-        //         "-g",
-        //         "hello.c",
-        //         "-o",
-        //         "hello.debug"
-        //     ],
-        //     "type": "shell",
-        //     "problemMatcher": [
-        //         "$gcc"
-        //     ]
-        // }
         {
-            "taskName":"run",
-            "command":"bash",
+            "label": "run",
+            "command": "bash",
             "args": [
                 "-c",
                 "./hello.out"

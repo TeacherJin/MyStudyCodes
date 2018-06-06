@@ -1,3 +1,6 @@
+/*
+测试makefile的程序
+*/
 #include <stdio.h>
 
 int main(int argc, char const *argv[])
