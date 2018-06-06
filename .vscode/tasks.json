@@ -1,0 +1,53 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    //"tasks": [
+    //    {
+    //        "label": "echo",
+    //        "type": "shell",
+    //        "command": "echo Hello"
+    //    }
+    //]
+    "tasks": [
+        {
+            "taskName": "build",
+            "command": "gcc",
+            "args": [
+                "-Wall",
+                "-g",
+                "hello.c",
+                "-o",
+                "hello.out"
+            ],
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        // {
+        //     "taskName": "build-debug",
+        //     "command": "gcc",
+        //     "args": [
+        //         "-g",
+        //         "hello.c",
+        //         "-o",
+        //         "hello.debug"
+        //     ],
+        //     "type": "shell",
+        //     "problemMatcher": [
+        //         "$gcc"
+        //     ]
+        // }
+        {
+            "taskName":"run",
+            "command":"bash",
+            "args": [
+                "-c",
+                "./hello.out"
+            ],
+            "type": "shell"
+        }
+    ]
+}
