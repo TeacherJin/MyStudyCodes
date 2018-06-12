@@ -16,6 +16,18 @@
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "clang-x64"
+        },
+        {
+            "name": "Windows",
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
+            "includePath": [
+                "c:/MinGW/include",
+                "c:/MinGW/lib/gcc/mingw32/6.3.0/include",
+                "${workspaceFolder}"
+            ]
         }
     ],
     "version": 4
