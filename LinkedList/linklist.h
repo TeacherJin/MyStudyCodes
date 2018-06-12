@@ -11,3 +11,9 @@
 #define LISTINCREMENT 10   //线性表存储空间的分配增量
 
 typedef int Status;
+
+//单链表的节点的数据结构
+typedef struct LNode{
+    int data;
+    struct LNode *next;
+}LNode,*LinkList;
