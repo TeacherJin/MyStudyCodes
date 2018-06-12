@@ -18,7 +18,7 @@ typedef struct
     int length;   //当前线性表长度
     int listsize; //当前分配的存储容量
 } SqList;
-//初始化一个线性表
+//初始化一个线性表，空的
 Status InitListSq(SqList *L)
 {
     L->elem = (int *)malloc(LIST_INIT_SIZE * sizeof(int));
@@ -29,6 +29,25 @@ Status InitListSq(SqList *L)
     }
     L->length = 0;                //初始长度为0，实际元素个数
     L->listsize = LIST_INIT_SIZE; //当前分配的存储容量，单位是元素个数
+    return OK;
+}
+//使用数组初始化一个线性表,L为待初始化线性表，a为数组，al为数组长度
+//将数组a中索引为0到al（不包含al）的元素存放到线性表L中
+Status InitListSqByArray(SqList *L,int a[],int al){
+    int maxsize=al>LIST_INIT_SIZE?al:LIST_INIT_SIZE;
+    L->elem = (int *)malloc(maxsize * sizeof(int));
+       
+    //分配空间失败时的处理
+    if (!L->elem)
+    {
+        exit(OVERFLOW);
+    }
+    L->length = 0;                //初始长度为0，实际元素个数
+    L->listsize = maxsize; //当前分配的存储容量，单位是元素个数
+    for(int i=0;i<al;i++){
+        *(L->elem+i)=a[i];
+        (L->length)++;
+    }
     return OK;
 }
 //向一个线性表L中的索引为i的位置插入数据e，即现有索引为i的元素的前面
@@ -87,4 +106,25 @@ Status ListGetSq(SqList *L, int i)
         return ERROR;
 
     return *(L->elem + i - 1);
+}
+//在线性表中查找一个元素e，存在则返回其索引，不存在返回ERROR
+int LocateElemSq(SqList *L,int e){
+    int index=1;
+    for(;index<=L->length;index++){
+        if(e==*(L->elem+index-1)){
+            break;
+        }
+    }
+    if(index<=L->length){
+        return index;
+    }else{
+        return ERROR;
+    }
+}
+
+//输出一个线性表中的所有元素
+void ListPrintSq(SqList *L){
+    for(int i=1;i<=L->length;i++){
+        printf("%d\n",*(L->elem+i-1));
+    }
 }
