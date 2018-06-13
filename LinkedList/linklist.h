@@ -28,6 +28,23 @@ Status LinkListInsert(LinkList H, int i, int e)
     s->next = p->next;
     p->next = s;
 }
+//删除链表中的一个节点，H为链表头指针，删除第i个元素，由e返回其值
+Status LinkListDel(LinkList H,int i, int *e){
+    LinkList p=H;
+    int j=1;
+    while(p->next &&j<i-1){
+        p=p->next;
+        j++;
+    }
+    if(!(p->next) || j>i-1)
+    return ERROR;
+    LinkList q;
+    q=p->next;
+    p->next=q->next;
+    *e=q->data;
+    free(q);
+    return OK;
+}
 
 //通过输入数据初始化一个链表，H表示头指针
 Status InitLinkList(LinkList H)
@@ -42,9 +59,22 @@ Status InitLinkList(LinkList H)
         s->next=NULL;
         p->next=s;
         p=s;
-
     }
 }
+//创建一个链表，书上的方法
+void CreateLinkList(LinkList H,int n){
+    H=(LinkList)malloc(sizeof(LNode));
+    H->next=NULL;
+    LinkList p;
+    for(int i=n;i>0;i--){
+        p=(LinkList)malloc(sizeof(LNode));
+        scanf("%d",&p->data);
+        p->next=H->next;
+        H->next=p;
+    }
+}
+
+
 //打印一个链表
 Status PrintLinkList(LinkList H){
     LinkList p=H;
