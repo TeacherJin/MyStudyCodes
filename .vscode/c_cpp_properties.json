@@ -25,8 +25,7 @@
             },
             "includePath": [
                 "c:/MinGW/include",
-                "c:/MinGW/lib/gcc/mingw32/6.3.0/include",
-                "${workspaceFolder}"
+                "c:/MinGW/lib/gcc/mingw32/6.3.0/include"
             ]
         }
     ],

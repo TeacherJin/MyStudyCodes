@@ -27,6 +27,7 @@ Status LinkListInsert(LinkList H, int i, int e)
     s->data = e;
     s->next = p->next;
     p->next = s;
+    return OK;
 }
 //删除链表中的一个节点，H为链表头指针，删除第i个元素，由e返回其值
 Status LinkListDel(LinkList H,int i, int *e){
@@ -60,6 +61,7 @@ Status InitLinkList(LinkList H)
         p->next=s;
         p=s;
     }
+    return OK;
 }
 //创建一个链表，书上的方法
 void CreateLinkList(LinkList H,int n){
@@ -73,8 +75,6 @@ void CreateLinkList(LinkList H,int n){
         H->next=p;
     }
 }
-
-
 //打印一个链表
 Status PrintLinkList(LinkList H){
     LinkList p=H;
@@ -83,4 +83,26 @@ Status PrintLinkList(LinkList H){
         printf("链表的第%d个节点的值是：%d\n",i++,p->data);
         p=p->next;
     }
+    return OK;
+}
+
+//合并两个升序排列的链表
+void MergeLinkList(LinkList La,LinkList Lb,LinkList Lc){
+    LinkList pa=La->next;
+    LinkList pb=Lb->next;
+    LinkList pc;
+    Lc=pc=La;
+    while(pa && pb){
+        if(pa->data<=pb->data){
+            pc->next=pa;
+            pc=pa;
+            pa=pa->next;
+        }else{
+            pc->next=pb;
+            pc=pb;
+            pb=pb->next;
+        }
+    }
+    pc->next=pa?pa:pb;
+    free(Lb);
 }
